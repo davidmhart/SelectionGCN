@@ -1,7 +1,7 @@
 import os.path as osp
 from sys import platform
 
-from torch_geometric.datasets import PPI, MNISTSuperpixels, TUDataset, CoMA, Planetoid, Reddit, Reddit2, Amazon, AmazonProducts, Coauthor, Flickr, Yelp, QM9
+from torch_geometric.datasets import MNISTSuperpixels, CoMA, QM9
 from torch_geometric.loader import DataLoader, NeighborLoader
 from torch_geometric.transforms import FaceToEdge, RandomNodeSplit
 

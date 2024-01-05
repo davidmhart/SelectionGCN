@@ -8,7 +8,7 @@ This is the official implementation of the paper "Improving Graph Networks Throu
 This code has been tested with Python 3.10, PyTorch 2.0.1, PyTorch Geometric 2.4.0, and PyTorch Geometric Temporal 0.54. The results presented in the paper are saved as Tensorboard logs in `experiments.zip`
 
 ## Spatial Graph Networks
-Selection-based graph convolution can improve the performance of spatial graph tasks. We provide code for running standard and selection-based graph network on spatial datasets. The following graph networks (PyG convention), datasets, and selection functions are built-in to our code:
+Selection-based graph convolution can improve the performance of spatial graph tasks. We provide code for running standard and selection-based graph network on spatial datasets. The following graph networks (PyG convention), datasets, and selection functions are built into our code:
 
 **Graph Networks**
 - GCN
@@ -70,7 +70,7 @@ To train a new graph network on one of the listed datasets, use the `train_traff
 ```python train_traffic_network.py METRLA SelGCN --num_spatial 3 --selection_function distance --selection_count 4```
 
 ## Molecular Property Prediction
-Selection-based networks can improve the performance of existing networks, or acheive similar performance with fewer parameters. This is demonstrated with our modification of the DimeNet for the QM9 dataset. Our simple modifications to the network can be found in `my_dimenet.py`. The results from the paper can be regenerated for each target using the `train_QM9_network.py` code. For example, to train a network on the $\epsilon_{HOMO}$ (target #2) using selection-based DimeNet with 5 distance bins and 3 angle bins, run
+Selection-based networks can improve the performance of existing networks, or acheive similar performance with fewer parameters. This is demonstrated with our modification of DimeNet for the QM9 dataset. Our simple modifications to the network can be found in `my_dimenet.py`. The results from the paper can be regenerated for each target using the `train_QM9_network.py` code. For example, to train a network on the $\epsilon_{HOMO}$ (target #2) using selection-based DimeNet with 5 distance bins and 3 angle bins, run
 
 ```python train_QM9_network.py 02 SelDimeNet --selection_function distance_angle 5 3```
 

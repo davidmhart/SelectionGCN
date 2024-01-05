@@ -5,10 +5,10 @@ This is the official implementation of the paper presented at WACV 2024.
 
 [Supplemental](https://openaccess.thecvf.com/content/WACV2024/supplemental/Hart_Improving_Graph_Networks_WACV_2024_supplemental.pdf)
 
-This code has been tested with Python 3.10, PyTorch 2.0.1, PyTorch Geometric 2.4.0, and PyTorch Geometric Temporal 0.54
+This code has been tested with Python 3.10, PyTorch 2.0.1, PyTorch Geometric 2.4.0, and PyTorch Geometric Temporal 0.54. The results presented in the paper are saved as Tensorboard logs in `experiments.zip`
 
 ## Spatial Graph Networks
-Selection-based graph convolution can improve the performance of spatial graph datasets. We provide code for running standard and selection-based graph network on spatial datasets. The following graph networks (PyG convention), datasets, and selection functions are built-in to our code:
+Selection-based graph convolution can improve the performance of spatial graph tasks. We provide code for running standard and selection-based graph network on spatial datasets. The following graph networks (PyG convention), datasets, and selection functions are built-in to our code:
 
 **Graph Networks**
 - GCN
@@ -41,3 +41,10 @@ When using a selection-based network, you can specify the selection features and
 ```python train_spatial_network.py MNIST SelGCN x --selection_criteria pos --selection_function direction --selection_count 7```
 
 *Note*: Selection count is 7 to include a 0th direction for nodes that connect to themselves.
+
+Results can be viewed using Tensorboard in the specified log directory. The code can be modified to include additional graph networks, datasets, and selection functions by modifying the `my_networks.py`, `my_datasets.py`, and `my_selection_functions.py` respectively.
+
+## Molecule Graph Networks
+Selection-based networks can improve the performance of existing networks, or acheive similar performance with fewer parameters. This is demonstrated with our modification of the DimeNet for the QM9 dataset. Our simple modifications to the network can be found in `my_dimenet.py`. The results from the paper can be regenerated for each target using the `train_QM9_network.py` code. For example, to train a network on the $\epsilon_{HOMO}$ (target #2) using selection-based DimeNet using 5 distance bins and 3 angle bins, run
+
+```python train_QM9_network.py 02 SelDimeNet --selection_function distance_angle 5 3```
